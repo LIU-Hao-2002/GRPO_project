@@ -1,0 +1,4 @@
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|█████     | 1/2 [00:00<00:00,  1.00it/s]Loading checkpoint shards: 100%|██████████| 2/2 [00:01<00:00,  1.06it/s]Loading checkpoint shards: 100%|██████████| 2/2 [00:01<00:00,  1.05it/s]
+current progress: 0.256
+current progress: 0.512
+current progress: 0.768

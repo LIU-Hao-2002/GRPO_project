@@ -1,0 +1,55 @@
+# Model arguments
+model_name_or_path: ../qwen1b5
+tokenizer_name_or_path: ../qwen1b5
+model_revision: main
+torch_dtype: bfloat16
+use_liger: false
+bf16: true
+tf32: false
+output_dir: runs/dpo_full_both2
+ 
+# Dataset arguments
+dataset_id_or_path: dataset/dpo_dataset_v2
+
+# LoRA arguments
+use_peft: false
+load_in_4bit: false
+lora_target_modules: [
+    "v_proj",
+    "q_proj"
+  ]
+# important as we need to train the special tokens for the chat template of llama 
+lora_modules_to_save: null # you might need to change this for qwen or other models
+lora_r: -100
+lora_alpha: 32
+
+# Training arguments
+max_steps: 500
+beta: 0.1
+max_length: 1024
+max_prompt_length: 256
+loss_type: sigmoid # default loss, alternatives: https://huggingface.co/docs/trl/dpo_trainer#loss-functions
+num_train_epochs: 1
+per_device_train_batch_size: 1
+gradient_accumulation_steps: 1
+gradient_checkpointing: true
+gradient_checkpointing_kwargs:
+  use_reentrant: false
+learning_rate: 5.0e-7
+lr_scheduler_type: cosine
+warmup_ratio: 0.03
+
+# Logging arguments
+logging_strategy: steps
+logging_steps: 10
+report_to:
+- tensorboard
+save_strategy: "epoch"
+save_steps: 100
+save_total_limit: 2
+seed: 42
+
+# Hugging Face Hub 
+push_to_hub: False
+  # hub_model_id: llama-3-1-8b-math-orca-qlora-10k-ep1 # if not defined same as output_dir
+hub_strategy: every_save

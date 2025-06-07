@@ -342,7 +342,8 @@ def evaluate(path):
         nums=eval(temp[0])
         target=temp[1].split('. You can use basic arithmetic operations ')[0]
         new_value=[]
-        for completion,_,_ in values:   ###
+        for completion,rewards in values:   ###
+            format,answer=rewards
             #completion=completion.split('\nassistant\nLet me solve this step by step.\n<think>')[1]
             format_score=format_reward_func([completion],[completion])[0]
             outcome_score=equation_reward_func([completion],[target],[nums])[0]
@@ -403,13 +404,13 @@ def eval_pipeline(model_path,prompt_path,bs=256,save_name='test'):
 
     
 if __name__=='__main__':
-    eval_pipeline('/mlx_devbox/users/liuhao.200207/playground/files/runs/dpo_full_both2','/mlx_devbox/users/liuhao.200207/playground/files/dataset/test.pkl',bs=512,save_name="dpo_full_both_self_2")
-    #dpo_dataset_main()
-    # prompt2comre=ref_sampling(model_name='/mlx_devbox/users/liuhao.200207/playground/DeepSeek-Math/evaluation/deepseek-ai/qwen2.5instruct7b',bs=128)
-    # with open('/mlx_devbox/users/liuhao.200207/playground/files/dataset/qwen7b_instruct_sampling.pkl','wb') as f:
+    # eval_pipeline('/mlx_devbox/users/liuhao.200207/playground/files/runs/dpo_full_both2','/mlx_devbox/users/liuhao.200207/playground/files/dataset/test.pkl',bs=512,save_name="dpo_full_both_self_2")
+    # dpo_dataset_main()
+    # prompt2comre=ref_sampling_ds(model_name='/mlx_devbox/users/liuhao.200207/playground/DeepSeek-Math/evaluation/deepseek-ai/ds_math_7b_instruct',bs=64,prompt_path="/mlx_devbox/users/liuhao.200207/playground/files/dataset/test.pkl")
+    path = '/mlx_devbox/users/liuhao.200207/playground/files/dataset/ds_math7b_instruct_test_sampling.pkl'
+    # with open(path,'wb') as f:
     #    pickle.dump(prompt2comre,f)
+    evaluate(path)
 
 
-
-
-# nohup python utils.py > dpo_full_both.txt &
+# nohup python utils.py > ds7b_instruct_test.txt &

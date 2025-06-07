@@ -1,0 +1,17 @@
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|█████     | 1/2 [00:01<00:01,  1.79s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:02<00:00,  1.40s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:02<00:00,  1.46s/it]
+current progress: 0.128
+current progress: 0.256
+current progress: 0.384
+current progress: 0.512
+current progress: 0.64
+current progress: 0.768
+current progress: 0.896
+Traceback (most recent call last):
+  File "/mlx_devbox/users/liuhao.200207/playground/files/utils.py", line 412, in <module>
+    evaluate(path)
+  File "/mlx_devbox/users/liuhao.200207/playground/files/utils.py", line 345, in evaluate
+    for completion,_,_ in values:   ###
+        ^^^^^^^^^^^^^^
+ValueError: not enough values to unpack (expected 3, got 2)
+format accuracy: 0.052
+answer accuracy: 0.0212
